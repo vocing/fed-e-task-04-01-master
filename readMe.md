@@ -23,7 +23,7 @@
 4. 请简述 workInProgress Fiber 树存在的意义是什么
 
    答：在 React 中，DOM 的更新采用了双缓存技术双缓存技术, 致力于更快速的 DOM 更新.  
-   1.当前 dom 中 react Root 节点的抽象层, 其内容与 react Root dom 对象的内容一致  
-   2.其本身也是一个 RootFiber, 由 FiberRoot 的 current 属性指定(被指定的才称为 workInProgress Fiber), 与其他的 RootFiber 交替来更新 dom 及相关操作  
+   1.workInProgress Fiber 是当前 dom 中 react Root 节点的抽象层, 其内容与 react Root dom 对象的内容一致  
+   2.workInProgress Fiber 其本身也是一个 RootFiber, 由 FiberRoot 的 current 属性指定(被指定的才称为 workInProgress Fiber), 与其他的 RootFiber 交替来更新 dom 及相关操作  
    3.这样的操作, 使得所有提交的更新先存储在 RootFiber 层, 更新时 FiberRoot 的 current 属性指向 RootFiber 时, 将更新全部渲染到 dom 中  
    4.意义：将所有更新操作的结构先存储在一个对象中, 然后再同步渲染, 避免了更新、渲染交替执行, 造成的页面卡帧问题.
